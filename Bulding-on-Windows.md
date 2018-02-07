@@ -17,7 +17,7 @@ To build Barrier on Windows you'll need, at minimum, the following things:
 ## Procedure
 
 ### The Barrier Program
-- Clone the Barrier github repository
+- Clone the Barrier repository from GitHub
 - Customize winbuild_env.bat (see below)
 - Run clean_build.bat
 - If the build succeeds your binaries will be in build/bin/{Debug,Release}
@@ -44,4 +44,4 @@ Feel free to make whatever changes you like to your local copy of Barrier. Barri
 
 ### Submitting patches
 
-If you make a change to Barrier's source that you think would benefit others, fork the project on Github and submit a pull request. If we agree that the patch would improve Barrier for a wide range of users then we may merge it. At this point it will have become an "official" change and you'll be credited in the commit log. Isn't open-source wonderful? :)
+If you make a change to Barrier's source that you think would benefit others, fork the project on GitHub and submit a pull request. If we agree that the patch would improve Barrier for a wide range of users then we may merge it. At this point it will have become an "official" change and you'll be credited in the commit log. Isn't open-source wonderful? :)
