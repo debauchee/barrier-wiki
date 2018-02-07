@@ -22,7 +22,7 @@ At this time Immune Keys are a Windows-only feature; your keyboard must be conne
 
 # Example Configuration
 
-    # this is a comment line. describe the reason for the follow immune key here.
+    # this is a comment line. describe the reason for the following immune key here
 
     # prevent Escape key from being forwarded to clients 
     0x1B
