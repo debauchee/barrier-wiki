@@ -27,6 +27,7 @@ At this time Immune Keys are a Windows-only feature; your keyboard must be conne
     # prevent Escape key from being forwarded to clients 
     0x1B
 
-    # you can also add comments after the keycode column. everything after the keycode is ignored so no # is required
+    # you can also add comments after the keycode column
+    # everything after the keycode is ignored so no # is required
 
     163 VK_RCONTROL (0xA3)	for discord muting
