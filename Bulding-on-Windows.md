@@ -1,4 +1,4 @@
-# Building Barrier from source on Windows
+# Build from source on Windows
 
 ## Before You Start
 
