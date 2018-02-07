@@ -23,7 +23,7 @@ To build Barrier on Windows you'll need, at minimum, the following things:
 - If the build succeeds your binaries will be in build/bin/{Debug,Release}
 
 ### The Barrier Installer
-*__WARNING:__ You will need to modify the build script if you want anything other than a Release installer for Win64.*
+*You will need to modify the build script if you want anything other than a Release installer for Win64.*
 - Complete the build procedure above using the Release configuration
 - Run build_installer.bat
 
