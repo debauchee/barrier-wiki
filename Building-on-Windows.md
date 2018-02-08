@@ -11,6 +11,7 @@ To build Barrier on Windows you'll need, at minimum, the following things:
 - [Bonjour SDK](https://developer.apple.com/download/more/?=Bonjour%20SDK%20for%20Windows): You'll need to make a free Apple Developer account first if you don't already have one to begin the download.
 - [CMake](https://cmake.org/download/): Get the Windows x64 MSI or ZIP.
 - [Git](https://git-scm.com/download/win): They automatically start the 32-bit download so cancel the 32 and click the 64-bit link.
+- [Git GUI](https://git-scm.com/download/gui/windows) **optional**: Choose a Windows-like UI front-end for git. If you know how to use a shell but would rather not then this option is probably for you.
 - [Qt](https://www.qt.io/download-thank-you?os=windows): The 5.9 branch is stable with Barrier.
 - [WiX Toolset](https://github.com/wixtoolset/wix3/releases/): This is specifically for building the Barrier installation project, but building Barrier with the default configuration ill fail if it isn't available.
 
