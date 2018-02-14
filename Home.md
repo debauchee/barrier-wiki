@@ -15,5 +15,5 @@ There is quite a bit to be added to our wiki here on GitHub. As time permits and
 
 [v1.9 - Windows x64 - EXE](https://www.dropbox.com/s/1h8iwd9xg1edxoa/BarrierSetup-v1.9.exe?dl=1)
 
-### OSX 10.3
+### OSX 10.13
 [v1.9 - OSX x64 - DMG](https://www.dropbox.com/s/setu2pjitjzwfpq/Barrier-v1.9.dmg?dl=1)
