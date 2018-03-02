@@ -18,6 +18,7 @@ At this time Immune Keys are a Windows-only feature; your keyboard must be conne
 - Add one line per key to this file, save it, and close it.
   - Each line starts with a keycode in decimal or hexadecimal and can follow with human-readable text to use as a comment field.
   - Any line that starts with a # is considered a comment line and is ignored. Blank lines are also ignored.
+- *Optional:* Depending on your use-case it may be necessary to prevent the server from elevating so that non-elevated server-side application will still be able to receive immune key notification while the client has focus. To do so change the Elevate option in settings to Never before restarting the host server in the step below.
 - Restart host server from the Barrier GUI (click Stop, then Start) to effect your changes.
 
 # Example Configuration
