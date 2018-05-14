@@ -8,12 +8,19 @@ There is quite a bit to be added to our wiki here on GitHub. As time permits and
 
 ## Binary Downloads
 
-### [Windows](https://github.com/debauchee/barrier/releases/download/v2.1.0/BarrierSetup-2.1.0.exe)
-The installer will automatically download and install the VC++ Runtime if necessary.
-### [OSX 10.9-10.13](https://github.com/debauchee/barrier/releases/download/v2.1.0/barrier-2.1.0.dmg)
-### [Generic Linux](https://github.com/debauchee/barrier/releases/download/v2.1.0/barrier-2.1.0-linux.tar.bz2)
-Build platform: Arch Linux May 2018
-### [FreeBSD 11](https://github.com/debauchee/barrier/releases/download/v2.1.0/barrier-2.1.0-freebsd.txz)
-Adoption of Barrier into the FreeBSD ports collection should be forthcoming. Until then please use this package.
+[Windows](https://github.com/debauchee/barrier/releases/download/v2.1.0/BarrierSetup-2.1.0.exe)
+* The installer will automatically download and install the VC++ Runtime if necessary.
+
+[OSX 10.9-10.13](https://github.com/debauchee/barrier/releases/download/v2.1.0/barrier-2.1.0.dmg)
+
+[Generic Linux](https://github.com/debauchee/barrier/releases/download/v2.1.0/barrier-2.1.0-linux.tar.bz2)
+* Build platform: Arch Linux May 2018
+
+[FreeBSD 11](https://github.com/debauchee/barrier/releases/download/v2.1.0/barrier-2.1.0-freebsd.txz)
+* Adoption of Barrier into the FreeBSD ports collection should be forthcoming. Until then please use this package.
+
 ### Distro-Specific Linux Pacakges
-We are expecting to have RPM and DEB packages shortly. Stay tuned!
+[ArchLinux AUR](https://aur.archlinux.org/packages/barrier/) (maintainer: [Tblue](https://github.com/Tblue))
+
+
+_We are expecting to have RPM and DEB packages shortly. Stay tuned!_
