@@ -4,29 +4,38 @@
 
 You should be at least moderately comfortable with Git, CMake, and the Windows command prompt before relying on this method. It requires a good bit of free hard drive space due to the large amount of dependencies required for the build (see below) and is meant for programmers that want to help us discover and fix programming errors.  When in doubt go for [binaries](Home) instead!
 
-## Requirements
+# How to Build Barrier under Windows
 
-To build Barrier on Windows you'll need, at minimum, the following things:
-- [Microsoft Visual Studio](https://www.visualstudio.com/vs/community/): The free version of VS 2017 will suffice. It will eventually require you to create an MSDN account.
-- [Bonjour SDK](https://developer.apple.com/download/more/?=Bonjour%20SDK%20for%20Windows): You'll need to make a free Apple Developer account first if you don't already have one to begin the download.
-- [CMake](https://cmake.org/download/): Get the Windows x64 MSI or ZIP.
-- [Git](https://git-scm.com/download/win): They automatically start the 32-bit download so cancel the 32 and click the 64-bit link.
-- [Git GUI](https://git-scm.com/download/gui/windows) **optional**: Choose a Windows-like UI front-end for git. If you know how to use a shell but would rather not then this option is probably for you.
-- [Qt](https://www.qt.io/download-thank-you?os=windows): The 5.9 branch is stable with Barrier.
-- [WiX Toolset](https://github.com/wixtoolset/wix3/releases/): This is specifically for building the Barrier installation project, but building Barrier with the default configuration ill fail if it isn't available.
+*as of 18 July 2018*
 
-## Procedure
+I am using Windows 10 64-Bit English 1803 (OS Build 17134.112).
 
-### The Barrier Program
-- Clone the Barrier repository from GitHub
-- Customize winbuild_env.bat (see below)
-- Run clean_build.bat
-- If the build succeeds your binaries will be in build/bin/{Debug,Release}
+- install [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/)
+- install [CMake](https://cmake.org/download/)
+- install [Qt (Open Source)](https://www.qt.io/download)
+    - download the installer
+    - on the select components screen, check the Qt version you want, I used `5.11.1`
+- install [Bonjour SDK for Windows](https://developer.apple.com/bonjour/)
+    - requries an account to download
+    - *warning:* will install into `Program Files` regardless
+- download the Barrier source code
+    - either clone it via Git
+    - or download the release archive and extract it
+- edit lines 4--8 in `clean_build.bat` accordingly, these are mine:
 
-### The Barrier Installer
-*You will need to modify the build script if you want anything other than a Release installer for Win64.*
-- Complete the build procedure above using the Release configuration
-- Run build_installer.bat
+      set B_BUILD_TYPE=Debug
+      set B_QT_ROOT=E:\dev\Qt
+      set B_QT_VER=5.11.1
+      set B_QT_MSVC=msvc2017_64
+      set B_BONJOUR=C:\Program Files\Bonjour SDK
+
+- open a *Developer Command Prompt for VS 2017*
+    - Start > Programs > Visual Studio 2017 > Visual Studio Tools > Developer Command Prompt for VS 2017
+- navigate to the Barrier folder
+- invoke `clean_build.bat`
+
+If everything went well you should now have a working `barrier.exe` inside `build/bin/Debug`.
+I don't know whether a release build built this way is deployable.
 
 ## Customization
 
