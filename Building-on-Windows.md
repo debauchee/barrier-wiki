@@ -11,6 +11,7 @@ You should be at least moderately comfortable with Git, CMake, and the Windows c
 I am using Windows 10 64-Bit English 1803 (OS Build 17134.112).
 
 - install [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/)
+  - Select Desktop development with C++
 - install [CMake](https://cmake.org/download/)
 - install [Qt (Open Source)](https://www.qt.io/download)
     - download the installer
