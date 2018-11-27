@@ -1,5 +1,7 @@
 # Windows 10
 
+Screenshots captured by [josephcalixtro](https://github.com/josephcalixtro)
+
 ![search windows defender](https://user-images.githubusercontent.com/2743744/49057950-ca40bd00-f23c-11e8-9fef-be3f440e74b3.png)
 
 ![click here to add exceptions](https://user-images.githubusercontent.com/2743744/49057956-cf057100-f23c-11e8-8b70-1bb4d6af8e58.png)
