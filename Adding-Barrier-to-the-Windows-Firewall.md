@@ -1,6 +1,6 @@
 # Windows 10
 
-Screenshots captured by [josephcalixtro](https://github.com/josephcalixtro)
+Screenshots captured by [l0o0](https://github.com/l0o0)
 
 ![search windows defender](https://user-images.githubusercontent.com/2743744/49057950-ca40bd00-f23c-11e8-9fef-be3f440e74b3.png)
 
