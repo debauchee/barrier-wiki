@@ -8,7 +8,7 @@ There is quite a bit to be added to our wiki here on GitHub. As time permits and
 
 ## Binary Downloads
 
-[Windows](https://github.com/debauchee/barrier/releases/download/v2.1.0/BarrierSetup-2.1.0.exe)
+[Windows](https://github.com/debauchee/barrier/releases/download/v2.1.0/BarrierSetup-amd64-2.1.0.exe)
 * The installer will automatically download and install the VC++ Runtime if necessary.
 
 [OSX 10.9-10.13](https://github.com/debauchee/barrier/releases/download/v2.1.0/barrier-2.1.0.dmg)
