@@ -5,11 +5,11 @@ to install them, one should follow these steps:
 
 ```shell
 $ flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-$ flatpak --user install flathub org.kde.Platform/x86_64/5.10
-$ flatpak --user install flathub org.kde.Sdk/x86_64/5.10
+$ flatpak --user install flathub org.kde.Platform/x86_64/5.12
+$ flatpak --user install flathub org.kde.Sdk/x86_64/5.12
 ```
 You should replace `x86_64` with your architecture (`i386`, `arm`, `aarch64`, `x86_64`)
-and `5.10` with the current version of the runtimes and SDK used in the [`com.github.debauchee.barrier.json` file](https://github.com/flathub/com.github.debauchee.barrier/blob/master/com.github.debauchee.barrier.json#L3-L5).
+and `5.12` with the current version of the runtimes and SDK used in the [`com.github.debauchee.barrier.json` file](https://github.com/flathub/com.github.debauchee.barrier/blob/master/com.github.debauchee.barrier.json#L3-L5).
 
 ## Flatpak builder
 
