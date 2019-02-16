@@ -14,3 +14,19 @@ cd barrier
 cd build
 sudo make install  # installs to /usr/local/ 
 ```
+
+## Fedora: Build from source:
+
+```
+sudo dnf install git cmake  gcc-c++ xorg-x11-server-devel \
+                 libcurl-devel avahi-compat-libdns_sd-devel \
+                 libXtst-devel qt5 qt5-devel openssl-devel
+git clone git@github.com:debauchee/barrier.git
+# this builds from master,
+# you can get release tarballs instead
+# if you want to build from a specific tag/release
+cd barrier
+./clean_build.sh
+cd build
+sudo make install  # installs to /usr/local/ 
+```
