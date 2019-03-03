@@ -1,3 +1,9 @@
+## Binaries Built
+
+- `barrier` the GUI front-end and "main" program
+- `barriers` the CLI server component
+- `barrierc` the CLI client component
+
 ## Ubuntu/Debian/Raspbian: Build from source
 
 ```
