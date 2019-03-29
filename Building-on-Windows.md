@@ -15,7 +15,7 @@ I am using Windows 10 64-Bit English 1803 (OS Build 17134.112).
 - install [CMake](https://cmake.org/download/)
 - install [Qt (Open Source)](https://www.qt.io/download)
     - download the installer
-    - on the select components screen, check the Qt version you want, I used `5.11.1`
+    - on the select components screen, check the Qt version you want, I used `5.12.x`, `x` being the latest.
 - install [Bonjour SDK for Windows](https://developer.apple.com/bonjour/)
     - requries an account to download
     - *warning:* will install into `Program Files` regardless
