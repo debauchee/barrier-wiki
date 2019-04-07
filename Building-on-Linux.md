@@ -26,7 +26,7 @@ sudo make install  # installs to /usr/local/
 ## Fedora: Build from source:
 
 ```
-sudo dnf install git cmake  gcc-c++ xorg-x11-server-devel \
+sudo dnf install git cmake make gcc-c++ xorg-x11-server-devel \
                  libcurl-devel avahi-compat-libdns_sd-devel \
                  libXtst-devel qt5 qt5-devel openssl-devel
 git clone git@github.com:debauchee/barrier.git
