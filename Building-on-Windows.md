@@ -18,7 +18,6 @@ I am using Windows 10 64-Bit English 1803 (OS Build 17134.112).
     - on the select components screen, check the Qt version you want, I used `5.12.x`, `x` being the latest.
 - install [Bonjour SDK for Windows](https://developer.apple.com/bonjour/)
     - requries an account to download
-		- [For those without an account](https://ipfs.io/ipfs/QmdZdkBTzrqaQ1KzVTZjHnQMD6HcAngV1vCXZ5FjpPWB1i)
     - *warning:* will install into `Program Files` regardless
 - download the Barrier source code
     - either clone it via Git
