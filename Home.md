@@ -6,23 +6,14 @@ There is quite a bit to be added to our wiki here on GitHub. As time permits and
 
 *Current Version:*:
 
-- Windows: 2.2.0
-- macOS 2.10
-- Linux 2.2.0
-- FreeBSD 2.2.0 (?)
+- Windows: 2.3.1
+- macOS 2.3.1
+- Linux 2.3.1
+- FreeBSD 2.3.1 (?)
 
 ## Binary Downloads
 
-[Windows](https://github.com/debauchee/barrier/releases/download/v2.1.2/BarrierSetup-2.2.0-Release.exe)
-* The installer will automatically download and install the VC++ Runtime if necessary.
-
-[OSX 10.9-10.13](https://github.com/debauchee/barrier/releases/download/v2.1.0/barrier-2.1.0.dmg)
-
-[Generic Linux](https://flathub.org/apps/details/com.github.debauchee.barrier)
-* Build platform: Arch Linux May 2018
-
-[FreeBSD 11](https://github.com/debauchee/barrier/releases/download/v2.1.0/barrier-2.1.0-freebsd.txz)
-* Adoption of Barrier into the FreeBSD ports collection should be forthcoming. Until then please use this package.
+[Binary downloads can be found here](https://github.com/debauchee/barrier/releases/tag/v2.3.1)
 
 ### Distro-Specific Linux Pacakges
 [ArchLinux AUR](https://aur.archlinux.org/packages/barrier/) (maintainer: [Tblue](https://github.com/Tblue))
