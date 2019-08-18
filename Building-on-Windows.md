@@ -30,8 +30,8 @@ I am using Windows 10 64-Bit English 1803 (OS Build 17134.112).
       set B_QT_MSVC=msvc2017_64
       set B_BONJOUR=C:\Program Files\Bonjour SDK
 
-- open a *Developer Command Prompt for VS 2017*
-    - Start > Programs > Visual Studio 2017 > Visual Studio Tools > Developer Command Prompt for VS 2017
+- open a *Developer Command Prompt for VS 2019*
+    - Start > Programs > Visual Studio 2019 > Visual Studio Tools > Developer Command Prompt for VS 2019
 - navigate to the Barrier folder
 - invoke `clean_build.bat`
 
@@ -42,7 +42,7 @@ I don't know whether a release build built this way is deployable.
 
 You will likely need to tweak a few knobs to complete the build. The easiest way to override build paths locally is to create a file called winbuild_env.bat in the root of your Barrier tree. This file is sourced before any build commands are executed so it's a good place to put environmental overrides. The most common ones are B_QT_ROOT to tell the build where your MSVC Qt folder is, and B_BUILD_TYPE when you're ready for your Release build.
 
-    set B_QT_ROOT=E:\Qt\5.6.3\msvc2015_64
+    set B_QT_ROOT=E:\Qt\5.13.0\msvc2017_64
 
     REM Uncomment when ready for a release build
     REM set B_BUILD_TYPE=Release
