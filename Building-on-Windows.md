@@ -6,9 +6,9 @@ You should be at least moderately comfortable with Git, CMake, and the Windows c
 
 # How to Build Barrier under Windows
 
-*as of 18 July 2018*
+*as of 08-18-2019*
 
-I am using Windows 10 64-Bit English 1803 (OS Build 17134.112).
+I am using Windows 10 64-Bit English 1903
 
 - install [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/)
   - Select Desktop development with C++
@@ -26,7 +26,7 @@ I am using Windows 10 64-Bit English 1803 (OS Build 17134.112).
 
       set B_BUILD_TYPE=Debug
       set B_QT_ROOT=E:\dev\Qt
-      set B_QT_VER=5.11.1
+      set B_QT_VER=5.13.0
       set B_QT_MSVC=msvc2017_64
       set B_BONJOUR=C:\Program Files\Bonjour SDK
 
