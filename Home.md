@@ -17,4 +17,4 @@ There is quite a bit to be added to our wiki here on GitHub. As time permits and
 
 ### Distro-Specific Linux Pacakges
 
-A list of distro specific packages can be found on [repology](https://repology.org/project/barrier/versions)
+[![Packaging status](https://repology.org/badge/vertical-allrepos/barrier.svg)](https://repology.org/project/barrier/versions)
