@@ -3,7 +3,7 @@
 ## General
 
 There is quite a bit to be added to our wiki here on GitHub. As time permits and as the project progresses we will be adding bits of information to the wiki. For now we wanted to share our binary downloads for stable builds. Stay tuned for more!
-### Distro-Specific Linux Pacakges
+### Distro-Specific Pacakges
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/barrier.svg)](https://repology.org/project/barrier/versions)
 
