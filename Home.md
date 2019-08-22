@@ -16,7 +16,5 @@ There is quite a bit to be added to our wiki here on GitHub. As time permits and
 [Binary downloads can be found here](https://github.com/debauchee/barrier/releases/tag/v2.3.1)
 
 ### Distro-Specific Linux Pacakges
-[ArchLinux AUR](https://aur.archlinux.org/packages/barrier/) (maintainer: [Tblue](https://github.com/Tblue))
 
-
-_We are expecting to have RPM and DEB packages shortly. Stay tuned!_
+A list of distro specific packages can be found on [repology](https://repology.org/project/barrier/versions)
