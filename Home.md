@@ -13,16 +13,10 @@ more!
 
 ## Binary Downloads
 
-[Windows](https://github.com/debauchee/barrier/releases/download/v2.3.2/BarrierSetup-2.3.2.exe)
-* The installer will automatically download and install the VC++ Runtime if
-  necessary.
-
-[macOS](https://github.com/debauchee/barrier/releases/download/v2.3.2/Barrier-2.3.2-Release.dmg)
-
-FreeBSD - no builds available as of yet.
-
-Linux - no builds available as of yet, RPM, DEB packages on the roadmap.
-
-### Distro-Specific Linux Packages
-
-[ArchLinux AUR](https://aur.archlinux.org/packages/barrier/) (maintainer: [Tblue](https://github.com/Tblue))
+- [Windows](https://github.com/debauchee/barrier/releases/download/v2.3.2/BarrierSetup-2.3.2.exe)
+  The installer will automatically download and install the Visual C++ Runtime
+  if necessary.
+- [macOS](https://github.com/debauchee/barrier/releases/download/v2.3.2/Barrier-2.3.2-Release.dmg)
+- Linux, FreeBSD, and OpenBSD - see
+  [here](https://repology.org/project/barrier/versions) for a list of packages
+  available for reposit
