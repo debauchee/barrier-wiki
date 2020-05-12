@@ -2,7 +2,7 @@
 
 This issues are some of the most common ones reported, and we aim
 
-(Please feel free to make PRs here [here][wiki_repo])
+(Please feel free to make PRs [here][wiki_repo])
 
 - Some AV software detecting Barrier as malware:
   We are aware that some [AV software detects](av_issue) Barrier as
@@ -15,6 +15,6 @@ This issues are some of the most common ones reported, and we aim
   Please feel free to inspect Barrier's [source code][src_code].
 
 
-[wiki_repo]: https:/github.com/debauchee/barrier-wiki
+[wiki_repo]: https://github.com/debauchee/barrier-wiki
 [av_issue]: https://github.com/debauchee/barrier/issues/666
 [src_code]: https://github.com/debauchee/barrier.git
