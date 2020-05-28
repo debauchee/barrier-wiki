@@ -99,7 +99,7 @@ already be in your `$PATH`.
 ## <a name="server_cli">Server Command Line Options</a>
 
 To see the server command line options, use the `--help` argument:
-```shell
+```
 barriers --help
 Start the barrier server component.
 
@@ -129,7 +129,7 @@ Options:
 ## <a name="client_cli">Client Command Line Options</a>
 
 To see the client command line options, use the `--help` argument:
-```shell
+```
 barrierc --help
 Start the barrier client and connect to a remote server component.
 
