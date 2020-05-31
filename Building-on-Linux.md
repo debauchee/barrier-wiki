@@ -8,7 +8,7 @@
 
 ## Ubuntu/Debian/Raspbian: Build from source
 
-```
+```shell
 sudo apt update && sudo apt upgrade
 sudo apt install git cmake make xorg-dev g++ libcurl4-openssl-dev \
                  libavahi-compat-libdnssd-dev libssl-dev libx11-dev \
@@ -25,7 +25,7 @@ sudo make install  # installs to /usr/local/
 
 ## Fedora: Build from source:
 
-```
+```shell
 sudo dnf install git cmake make gcc-c++ xorg-x11-server-devel \
                  libcurl-devel avahi-compat-libdns_sd-devel \
                  libXtst-devel qt5 qt5-devel openssl-devel
