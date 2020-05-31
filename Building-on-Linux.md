@@ -38,3 +38,17 @@ cd barrier
 cd build
 sudo make install  # installs to /usr/local/ 
 ```
+
+## openSUSE: Build from source:
+
+```shell
+sudo zypper install libdrm-devel libglvnd-devel libICE-devel libQt5Core-devel libQt5Gui-devel libQt5Network-devel libqt5-qtbase-common-devel libQt5Widgets-devel libSM-devel libXinerama-devel libXrandr-devel libXrender-devel
+git clone https://github.com/debauchee/barrier.git
+# this builds from master,
+# you can get release tarballs instead
+# if you want to build from a specific tag/release
+cd barrier
+./clean_build.sh
+cd build
+sudo make install # install to /usr/local/
+```
