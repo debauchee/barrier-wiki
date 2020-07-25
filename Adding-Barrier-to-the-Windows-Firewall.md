@@ -1,4 +1,4 @@
-# Windows 10
+## Adding Barrier to the Windows Firewall
 
 Screenshots captured by [l0o0](https://github.com/l0o0)
 
