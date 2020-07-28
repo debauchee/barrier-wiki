@@ -19,4 +19,4 @@ more!
 - [macOS](https://github.com/debauchee/barrier/releases/download/v2.3.2/Barrier-2.3.2-Release.dmg)
 - Linux, FreeBSD, and OpenBSD - see
   [here](https://repology.org/project/barrier/versions) for a list of packages
-  available for reposit
+  available in package repositories.
