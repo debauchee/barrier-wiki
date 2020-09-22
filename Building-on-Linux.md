@@ -28,7 +28,11 @@ sudo dnf install git cmake make gcc-c++ xorg-x11-server-devel \
 ### openSUSE
 
 ```shell
-sudo zypper install libdrm-devel libglvnd-devel libICE-devel libQt5Core-devel libQt5Gui-devel libQt5Network-devel libqt5-qtbase-common-devel libQt5Widgets-devel libSM-devel libXinerama-devel libXrandr-devel libXrender-devel
+sudo zypper install --type pattern devel_basis
+sudo zypper install libdrm-devel libglvnd-devel libICE-devel \
+        libQt5Core-devel libQt5Gui-devel libQt5Network-devel \
+        libqt5-qtbase-common-devel libQt5Widgets-devel libSM-devel \
+        libXinerama-devel libXrandr-devel libXrender-devel
 ```
 
 ## Building from source
