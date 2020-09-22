@@ -25,6 +25,18 @@ sudo dnf install git cmake make gcc-c++ xorg-x11-server-devel \
                  libXtst-devel qt5 qt5-devel openssl-devel
 ```
 
+### CentOS 8+
+
+(Make sure you have RPM Fusion and EPEL enabled, with PowerTools as well)
+
+```shell
+sudo dnf groupinstall "Development Tools"
+sudo dnf install 'dnf-command(config-manager)'
+sudo dnf config-manager --set-enabled PowerTools
+sudo dnf install cmake3 avahi-compat-libdns_sd-devel libX11-devel libXtst-devel \
+                qt5-qtbase-devel libcurl-devel desktop-file-utils openssl-devel
+```
+
 ### openSUSE
 
 ```shell
