@@ -4,7 +4,7 @@
 - `barriers` the CLI server component
 - `barrierc` the CLI client component
 
-**note**: these aren't the only things build at compile time, but  merely what the end-user is expected to use.
+**note**: these aren't the only things build at compile time, but merely what the end-user is expected to use.
 
 ## Preparing your system
 
