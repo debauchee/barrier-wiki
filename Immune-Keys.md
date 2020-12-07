@@ -14,7 +14,7 @@ At this time Immune Keys are a Windows-only feature; your keyboard must be conne
 ## Immune Keys Procedure
 
 - Check [this table](https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731(v=vs.85).aspx) for the virtual key code value of the key you want to immune.
-- Create or open ImmuneKeys.txt inside the C:\Users\USERNAME\AppData\Local\Barrier folder.
+- Create or open ImmuneKeys.txt inside your profile directory, %LocalAppData%\Barrier by default, configurable with `--profile-dir` when running from [command line](Command-Line.md).
 - Add one line per key to this file, save it, and close it.
   - Each line starts with a keycode in decimal or hexadecimal and can follow with human-readable text to use as a comment field.
   - Any line that starts with a # is considered a comment line and is ignored. Blank lines are also ignored.

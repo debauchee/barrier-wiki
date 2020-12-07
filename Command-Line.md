@@ -31,6 +31,7 @@ command output
 - [Windows Service](#windows_service)
 - [Text File Configuration](#text_config)
 - [Server Configuration File](#server_config)
+- [SSL/TLS Configuration](#ssl_config)
 
 ---
 
@@ -58,6 +59,42 @@ To add the directory to `%PATH%`:
 - Click _OK_ in the _System Properties_ dialog
 
 This will only effect command prompts opened after the change.
+
+### Portable
+
+The command line version of Barrier is a single client executable `barrierc.exe`
+and a single server executable `barriers.exe`. They both have a dependency to OpenSSL
+libraries, `libeay32.dll` and `ssleay32.dll` (used for encryption with argument
+`--enable-crypto`), as well as Microsoft Visual C++ runtime libraries.
+
+From an existing installation you can copy the necessary program files to
+a location of choice, to get a command line only portable (depending on configuration)
+installation. Copy the following files from the installation directory `C:\Program Files\Barrier`:
+
+```
+barrierc.exe
+barriers.exe
+libeay32.dll
+ssleay32.dll
+```
+
+To be able to generate server certificate, you can also choose to include the OpenSSL
+application itself (on the server), together with Barrier's predefined OpenSSL
+configuration file:
+
+```
+openssl.exe
+barrier.conf
+```
+
+As long as you have the [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) installed (or copy the necessary runtime libaries
+`msvcp140.dll`, `vcruntime140.dll` and `vcruntime140_1.dll` into the application directory),
+you will now have a stand-alone application directory that you can manually copy into computers
+where you need it.
+
+For a completely portable installation, with local configuration, you must configure the
+location of server configuration file and SSL/TLS configuration files. See [Text File Configuration](#text_config), [Server Command Line Options](#server_cli),
+[Client Command Line Options](#client_cli) and [SSL/TLS Configuration](#ssl_config), below.
 
 <a href="#top">Back to top</a>
 
@@ -92,6 +129,15 @@ file or set the `$PATH` variable in your `.profile` or `.bashrc` file.
 If Barrier has been installed using a package manager or equivalent it should
 already be in your `$PATH`.
 
+If installed using flatpak, you can run the command line client like this:
+```cmd
+flatpak run --command=barrierc com.github.debauchee.barrier
+```
+And server like this:
+```cmd
+flatpak run --command=barriers com.github.debauchee.barrier
+```
+
 <a href="#top">Back to top</a>
 
 ---
@@ -119,6 +165,7 @@ Options:
       --no-tray            disable the system tray icon.
       --enable-drag-drop   enable file drag & drop.
       --enable-crypto      enable the crypto (ssl) plugin.
+      --profile-dir <path> use named profile directory instead.
   -f, --no-daemon          run in the foreground.
 ```
 
@@ -147,6 +194,7 @@ Options:
       --no-tray            disable the system tray icon.
       --enable-drag-drop   enable file drag & drop.
       --enable-crypto      enable the crypto (ssl) plugin.
+      --profile-dir <path> use named profile directory instead.
   -f, --no-daemon          run in the foreground.
       --daemon             run as a daemon. (*)
 ```
@@ -231,12 +279,24 @@ The Services snap-in can be accessed by pressing `(⊞ Win) + R` and typing
 
 If you use Barrier from the command line you may need to create a configuration
 file. Configuration files can be copied from their default GUI locations as a
-baseline. 
+baseline.
 
 The client will use the configuration specified by the server.
 
-When a text file configuration is used it needs to be specified with the
-`--config` option on the command line or it will use the default locations.
+By default the server will look for a configuration file at the following paths, in prioritized order:
+- User specific location: `%LocalAppData%\Barrier\barrier.sgc` on Windows, `~/.local/share/barrier/.barrier.conf` or `$XDG_DATA_HOME/barrier/.barrier.conf` on Linux.
+- System shared location: `C:\ProgramData\Barrier\barrier.sgc` on Windows, `/etc/barrier.conf` on Linux.
+
+The user specific location can be customized with command line argument `--profile-dir`,
+and Barrier will look for a configuration file with default name (`barrier.sgc` on Windows,
+`.barrier.conf` on Linux) there:
+
+```shell
+barriers --profile-dir ~/barrier/config/path ...
+```
+
+You can also use command line argument `--config` to set path to a specific configuration
+file that should be used.
 
 ```shell
 barriers --config ~/barrier/config/path/file.conf ...
@@ -488,5 +548,74 @@ troubleshooting purposes, and is structured like an `.ini` file. It has two
 sections, `[General]` and `[internalConfig]`.
 
 <a href="#top">Back to top</a>
+
+## <a name="ssl_config">SSL/TLS Configuration</a>
+
+Barrier supports SSL/TLS encryption, by use of the `OpenSSL` library (included).
+This must be anabled with command line argument `--enable-crypto`, and requires a
+certificate and fingerprint to be configured.
+
+The SSL related configuration is kept in subdirectory "SSL" in the same user specific location
+as the [text file configuration](#text_config) is loaded from: By default
+`%LocalAppData%\Barrier\SSL` on Windows, `~/.local/share/barrier/SSL` or `$XDG_DATA_HOME/barrier/SSL`
+on Linux, but configurable with command line argument `--profile-dir`.
+
+On the server, the root of the SSL directory must contain the certificate as a file
+with name `Barrier.pem`, containing the private and public key.
+
+Barrier uses fingerprints to validate that a malicious server is not trying to intercept a client
+connection. A server's fingerprint must be generated from the certificate, and may be kept
+in file `SSL/Fingerprints/Local.txt` on the server. All clients must have the fingerprint
+hash string of trusted servers in a file `SSL/Fingerprints/TrustedServers.txt`.
+When connecting to a server, if it presents a fingerprint not explicitely trusted by the client,
+it will refuse the connection. See also [Fingerprint trust troubleshooting](https://github.com/debauchee/barrier/wiki/Troubleshooting#fingerprint-trust).
+
+The server will therefore typically contain the following files:
+```
+/SSL/Barrier.pem
+/SSL/Fingerprints/Local.txt
+```
+
+Clients must contain the following file:
+```
+/SSL/Fingerprints/TrustedServers.txt
+```
+
+### Generating certificate and fingerprint
+
+The main UI application has built-in functionality to generate a self-signed server certificate,
+and fingerprint. In a command line only ([portable](#portable)) environment you will have to create these manually,
+using the OpenSSL command line utility, which is included in a Barrier installation together
+with a Barrier specific OpenSSL configuration file `barrier.conf`. To create them the same
+way as the UI application does, you can follow the following Windows example.
+It uses `openssl.exe` and `barrier.conf` from a Barrier installed in
+`C:\Program Files\Barrier`, generating configuration in `%LocalAppData%\Barrier\SSL`.
+If you have the OpenSSL files in a different location and/or are planning to keep the SSL files in a
+custom location specified with command line argument `--profile-dir`, you must change the paths in the example accordingly.
+
+```
+mkdir "%LocalAppData%\Barrier\SSL\Fingerprints" >NUL 2>&1
+set OPENSSL_CONF=C:\Program Files\Barrier\barrier.conf
+SET RANDFILE=%LocalAppData%\Barrier\SSL\.rnd
+"C:\Program Files\Barrier\openssl.exe" req -x509 -nodes -days 365 -subj /CN=Barrier -newkey rsa:2048 -keyout "%LocalAppData%\Barrier\SSL\Barrier.pem" -out "%LocalAppData%\Barrier\SSL\Barrier.pem"
+IF EXIST "%RANDFILE%" DEL "%RANDFILE%"
+"C:\Program Files\Barrier\openssl.exe" x509 -fingerprint -sha1 -noout -in "%LocalAppData%\Barrier\SSL\Barrier.pem" > "%LocalAppData%\Barrier\SSL\Fingerprints\Local.txt"
+```
+
+Now, on any clients you must manually create the `%LocalAppData%\Barrier\SSL\Fingerprints\TrustedServers.txt` file,
+with the hash from the server's `%LocalAppData%\Barrier\SSL\Fingerprints\Local.txt`.
+
+Given the server's Local.txt contains:
+
+```
+SHA1 Fingerprint=96:32:AB:DD:38:5C:E5:21:20:8E:52:E8:83:28:A0:2A:CC:CC:8F:A3
+```
+
+You must put the following into the client's TrustedServers.txt:
+```
+96:32:AB:DD:38:5C:E5:21:20:8E:52:E8:83:28:A0:2A:CC:CC:8F:A3
+```
+
+
 
 ---
