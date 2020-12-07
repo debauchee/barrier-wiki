@@ -129,6 +129,15 @@ file or set the `$PATH` variable in your `.profile` or `.bashrc` file.
 If Barrier has been installed using a package manager or equivalent it should
 already be in your `$PATH`.
 
+If installed using flatpak, you can run the command line client like this:
+```cmd
+flatpak run --command=barrierc com.github.debauchee.barrier
+```
+And server like this:
+```cmd
+flatpak run --command=barriers com.github.debauchee.barrier
+```
+
 <a href="#top">Back to top</a>
 
 ---
