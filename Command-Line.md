@@ -583,35 +583,36 @@ Clients must contain the following file:
 
 ### Generating certificate and fingerprint
 
-The main UI application has built-in functionality to generate a self-signed server certificate,
-and fingerprint. In a command line only ([portable](#portable)) environment you will have to create these manually,
-using the OpenSSL command line utility, which is included in a Barrier installation together
-with a Barrier specific OpenSSL configuration file `barrier.conf`. To create them the same
-way as the UI application does, you can follow the following Windows example.
-It uses `openssl.exe` and `barrier.conf` from a Barrier installed in
-`C:\Program Files\Barrier`, generating configuration in `%LocalAppData%\Barrier\SSL`.
-If you have the OpenSSL files in a different location and/or are planning to keep the SSL files in a
-custom location specified with command line argument `--profile-dir`, you must change the paths in the example accordingly.
+The main UI application has built-in functionality for handling encryption.
+In server mode it will generate a self-signed server certificate and a fingerprint.
+In client mode it will prompt for you to accept the server's fingerprint, and add
+it to your list of trusted servers.
+In a command line only ([portable](#portable)) environment you will have to handle
+this manually. You can use the OpenSSL command line utility which is included in
+a Barrier installation together with a Barrier specific OpenSSL configuration
+file `barrier.conf`. To create them the same way as the UI application does,
+you can follow the following Windows example. It uses `openssl.exe` and `barrier.conf`
+from a Barrier installed in default location `C:\Program Files\Barrier`, generating
+configuration in default location `%LocalAppData%\Barrier\SSL`. If you have the
+OpenSSL files in a different location and/or are planning to keep the SSL files in
+a custom location specified with command line argument `--profile-dir`, you must
+change the paths in the example accordingly.
 
 ```
-mkdir "%LocalAppData%\Barrier\SSL\Fingerprints" >NUL 2>&1
-set OPENSSL_CONF=C:\Program Files\Barrier\barrier.conf
+MKDIR "%LocalAppData%\Barrier\SSL\Fingerprints" >NUL 2>&1
+SET OPENSSL_CONF=C:\Program Files\Barrier\barrier.conf
 SET RANDFILE=%LocalAppData%\Barrier\SSL\.rnd
 "C:\Program Files\Barrier\openssl.exe" req -x509 -nodes -days 365 -subj /CN=Barrier -newkey rsa:2048 -keyout "%LocalAppData%\Barrier\SSL\Barrier.pem" -out "%LocalAppData%\Barrier\SSL\Barrier.pem"
 IF EXIST "%RANDFILE%" DEL "%RANDFILE%"
-"C:\Program Files\Barrier\openssl.exe" x509 -fingerprint -sha1 -noout -in "%LocalAppData%\Barrier\SSL\Barrier.pem" > "%LocalAppData%\Barrier\SSL\Fingerprints\Local.txt"
+FOR /F "tokens=2 delims=^=" %a in ('""C:\Program Files\Barrier\openssl.exe" x509 -fingerprint -sha1 -noout -in "%LocalAppData%\Barrier\SSL\Barrier.pem""') DO ECHO %a > "%LocalAppData%\Barrier\SSL\Fingerprints\Local.txt"
 ```
 
-Now, on any clients you must manually create the `%LocalAppData%\Barrier\SSL\Fingerprints\TrustedServers.txt` file,
-with the hash from the server's `%LocalAppData%\Barrier\SSL\Fingerprints\Local.txt`.
+Now, on any clients you must manually ensure there is a text file
+`%LocalAppData%\Barrier\SSL\Fingerprints\TrustedServers.txt`,
+and append a line to it, with the hash string from the server's
+`%LocalAppData%\Barrier\SSL\Fingerprints\Local.txt`,
+e.g.
 
-Given the server's Local.txt contains:
-
-```
-SHA1 Fingerprint=96:32:AB:DD:38:5C:E5:21:20:8E:52:E8:83:28:A0:2A:CC:CC:8F:A3
-```
-
-You must put the following into the client's TrustedServers.txt:
 ```
 96:32:AB:DD:38:5C:E5:21:20:8E:52:E8:83:28:A0:2A:CC:CC:8F:A3
 ```
