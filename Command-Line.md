@@ -442,6 +442,9 @@ switchCorners = {none, top-left, top-right, bottom-left, bottom-right, left, rig
 switchCornerSize = N
 switchDelay = N
 switchDoubleTap = N
+switchNeedsShift = {true|false}
+switchNeedsControl = {true|false}
+switchNeedsAlt = {true|false}
 screenSaverSync = {true|false}
 relativeMouseMoves = {true|false}
 clipboardSharing = {true|false}
@@ -461,6 +464,9 @@ of the listed corners
 `N` milliseconds
 - `switchDoubleTap` prevents switching unless the edge is double-tapped 
 within `N` milliseconds
+- `switchNeedsShift` prevents switching unless the shift key is held
+- `switchNeedsControl` prevents switching unless the control key is held
+- `switchNeedsAlt` prevents switching unless the alt key is held
 - `screenSaverSync` will sync the screensavers if set to `true`. If set to false
 the clients will use their own screensaver settings and the server screensaver
 won't start as long as there is input to any screen
