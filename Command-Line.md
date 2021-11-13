@@ -565,12 +565,13 @@ on Linux, but configurable with command line argument `--profile-dir`.
 On the server, the root of the SSL directory must contain the certificate as a file
 with name `Barrier.pem`, containing the private and public key.
 
-Barrier uses fingerprints to validate that a malicious server is not trying to intercept a client
-connection. A server's fingerprint must be generated from the certificate, and may be kept
-in file `SSL/Fingerprints/Local.txt` on the server. All clients must have the fingerprint
-hash string of trusted servers in a file `SSL/Fingerprints/TrustedServers.txt`.
-When connecting to a server, if it presents a fingerprint not explicitely trusted by the client,
-it will refuse the connection. See also
+Barrier uses fingerprints to validate that a malicious server is not trying to intercept
+a client connection, and be if successfull it would be able to send mouse and keyboard
+input to the client. A server's fingerprint must be generated from the certificate, and
+may be kept in file `SSL/Fingerprints/Local.txt` on the server. All clients must have the
+fingerprint hash string of trusted servers in a file `SSL/Fingerprints/TrustedServers.txt`.
+When connecting to a server, if it presents a fingerprint not explicitely trusted by the
+client, it will refuse the connection. See also
 [Fingerprint trust troubleshooting](https://github.com/debauchee/barrier/wiki/Troubleshooting#fingerprint-trust).
 
 The server will therefore typically contain the following files:
@@ -584,13 +585,42 @@ Clients must contain the following file:
 /SSL/Fingerprints/TrustedServers.txt
 ```
 
+In addition to the above described server identify verification on clients, Barrier also
+supports verification of client identities connecting to the server. This is not as
+critical as the verification of server identity, since a malicous client will not be able
+to control the mouse and keyboard on server, but it can still receive input and
+potentially set the clipboard etc. In the main UI application this is disabled by default,
+but can be activated with setting "Require client certificate". When running server from
+command-line it is the opposite: Enabled by default, but can be disabled with command-line
+argument `--disable-client-cert-checking`. When this is enabled the client also needs a
+certificate, same as server, and its fingerprint must be added to file
+`SSL/Fingerprints/TrustedClients.txt` on the server.
+
+The server will now contain the following files:
+```
+/SSL/Barrier.pem
+/SSL/Fingerprints/Local.txt
+/SSL/Fingerprints/TrustedClients.txt
+```
+
+Clients will now contain the following files:
+```
+/SSL/Barrier.pem
+/SSL/Fingerprints/Local.txt
+/SSL/Fingerprints/TrustedServers.txt
+```
+
+
 ### Generating certificate and fingerprint
 
 The main UI application has built-in functionality for handling encryption.
-In server mode it will generate a self-signed server certificate and a fingerprint.
-In client mode it will prompt for you to accept the server's fingerprint, and add
-it to your list of trusted servers. In a command line only ([portable](#portable))
-environment you will have to handle this manually.
+On first start it will generate a self-signed server certificate and save to disk,
+together with a copy of its fingerprint. In client mode it will prompt for you to accept
+the server's fingerprint, and add it to your list of trusted servers. If setting
+"Require client certificate" is enabled it will also in server mode prompt to accept
+clients fingerprints, and add it to the list of trusted clients.
+In a command line only ([portable](#portable)) environment you will have to handle
+this fingerprint trust manually.
 
 To manually create the certificate and fingerprint similar to how the UI application does
 it, you can follow the Windows example below. It creates them in the default location
@@ -603,7 +633,7 @@ default location `C:\Program Files\OpenSSL-Win64`.
 ```
 MKDIR "%LocalAppData%\Barrier\SSL\Fingerprints" >NUL 2>&1
 "C:\Program Files\OpenSSL-Win64\bin\openssl.exe" req -config "C:\Program Files\OpenSSL-Win64\bin\openssl.cfg" -x509 -nodes -days 365 -subj /CN=Barrier -newkey rsa:2048 -keyout "%LocalAppData%\Barrier\SSL\Barrier.pem" -out "%LocalAppData%\Barrier\SSL\Barrier.pem"
-FOR /F "tokens=2 delims=^=" %%a in ('""C:\Program Files\OpenSSL-Win64\bin\openssl.exe" x509 -fingerprint -sha256 -noout -in "%LocalAppData%\Barrier\SSL\Barrier.pem""') DO ECHO v2:sha256:%a > "%LocalAppData%\Barrier\SSL\Fingerprints\Local.txt"
+FOR /F "tokens=2 delims=^=" %%a in ('""C:\Program Files\OpenSSL-Win64\bin\openssl.exe" x509 -fingerprint -sha256 -noout -in "%LocalAppData%\Barrier\SSL\Barrier.pem""') DO ECHO v2:sha256:%a> "%LocalAppData%\Barrier\SSL\Fingerprints\Local.txt"
 ```
 
 Now, on any clients you must manually ensure there is a text file
@@ -616,6 +646,8 @@ e.g.
 v2:sha256:92:D0:AB:DD:38:5C:E5:21:20:8E:52:E8:83:28:A0:2A:CC:CC:8F:A3:70:41:9B:A6:D7:98:9C:ED:50:3F:D7:FE
 ```
 
-
+When using client verification you must also do the same the other way around:
+copy the fingerprint from `%LocalAppData%\Barrier\SSL\Fingerprints\Local.txt` on each
+client into `%LocalAppData%\Barrier\SSL\Fingerprints\TrustedClients.txt` on server.
 
 ---
