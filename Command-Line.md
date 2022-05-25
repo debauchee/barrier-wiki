@@ -194,6 +194,7 @@ Options:
       --no-tray            disable the system tray icon.
       --enable-drag-drop   enable file drag & drop.
       --enable-crypto      enable the crypto (ssl) plugin.
+      --disable-crypto     disable the crypto (ssl) plugin when launching the client connection.
       --profile-dir <path> use named profile directory instead.
   -f, --no-daemon          run in the foreground.
       --daemon             run as a daemon. (*)
